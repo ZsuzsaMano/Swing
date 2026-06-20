@@ -19,7 +19,7 @@ public class LayoutTest {
         f.add(new JButton("South"), BorderLayout.SOUTH);
         f.add(new JButton("West"), BorderLayout.WEST);
         f.add(new JButton("East"), BorderLayout.EAST);
-        f.setSize(300, 200);
+        f.pack();
         f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
