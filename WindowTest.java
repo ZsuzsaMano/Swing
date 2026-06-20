@@ -40,7 +40,6 @@ public class WindowTest {
             }
         });
         f.add(textField);
-
         f.add(button);
         f.setSize(300, 400);
         f.setLocationRelativeTo(null);
