@@ -20,7 +20,7 @@ public class WindowTest {
                 System.exit(0);
             }
         });
-        f. setLayout(new FlowLayout());
+        f.setLayout(new FlowLayout());
         f.add(new JLabel("this is a Label"));
         JButton button = new JButton("Close");
         button.addActionListener(new ActionListener() {
@@ -29,6 +29,17 @@ public class WindowTest {
                 System.exit(0);
             }
         });
+        JTextField textField = new JTextField("", 20);
+        textField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String input = ((JTextField) e.getSource()).getText();
+                if (input.equals("quit")) {
+                    System.exit(0);
+                }
+            }
+        });
+        f.add(textField);
 
         f.add(button);
         f.setSize(300, 400);
