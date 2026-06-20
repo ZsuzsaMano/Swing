@@ -1,7 +1,6 @@
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class WindowTest {
     public static void main(String[] args) {
@@ -21,6 +20,17 @@ public class WindowTest {
                 System.exit(0);
             }
         });
+        f. setLayout(new FlowLayout());
+        f.add(new JLabel("this is a Label"));
+        JButton button = new JButton("Close");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        f.add(button);
         f.setSize(300, 400);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
