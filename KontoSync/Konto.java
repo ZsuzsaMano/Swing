@@ -23,6 +23,14 @@ public class Konto {
         saldo = saldo - betrag;
     }
 
+    public synchronized void transfer(Konto ziel, int betrag) {
+        synchronized (ziel) { // ziel object monitor muss auch gesperrt sein during transaction (kann zu
+                              // Deadlock führen wenn zwei Konten gleichzeitgi zu einander transferieren)
+            this.saldo = this.saldo - betrag;
+            ziel.saldo = ziel.saldo + betrag;
+        }
+    }
+
     public void printSaldo() {
         System.out.println(String.valueOf(saldo));
     }
