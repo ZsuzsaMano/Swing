@@ -13,7 +13,7 @@ public class RingBuffer {
 
     public synchronized void storeProduct(Product product)
             throws InterruptedException {
-        if (size >= data.length) {
+        while (size == data.length) {
             wait();
         }
         int lastInsertionPos = (startPos + size - 1) % data.length;
@@ -21,19 +21,20 @@ public class RingBuffer {
         data[insertPos] = product;
         size++;
         System.out.println(id + ": " + size + " Produkte im Lager");
-        notify();
+        notifyAll();
+
     }
 
     public synchronized Product getProduct()
             throws InterruptedException {
-        if (size <= 0) {
+        while (size == 0) {
             wait();
         }
         size--;
         Product product = data[startPos];
         startPos = (startPos + 1) % data.length;
         System.out.println(id + ": " + size + " Produkte im Lager");
-        notify();
+        notifyAll();
         return product;
     }
 }
